@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="es">
   <head>
@@ -208,11 +207,12 @@
 
   <body>
     <div id="app">
-
       <!-- HEADER -->
 
       <header class="fixed top-0 inset-x-0 z-50 bg-[#07040f]/85 backdrop-blur">
-        <div class="container mx-auto px-6 h-16 flex items-center justify-between">
+        <div
+          class="container mx-auto px-6 h-16 flex items-center justify-between"
+        >
           <div class="font-black text-xl">ElGiovah</div>
 
           <nav class="hidden md:flex gap-9 text-sm text-slate-300">
@@ -227,11 +227,11 @@
       </header>
 
       <main class="pt-24" id="inicio">
-
         <!-- HERO / TWITCH EN VIVO -->
 
-        <section class="container mx-auto px-6 pb-28 grid lg:grid-cols-2 gap-14 items-center">
-
+        <section
+          class="container mx-auto px-6 pb-28 grid lg:grid-cols-2 gap-14 items-center"
+        >
           <div>
             <p class="cyan uppercase tracking-[.28em] text-xs font-black mb-4">
               Streaming de Twitch
@@ -278,17 +278,13 @@
               allow="autoplay; fullscreen"
             ></iframe>
           </div>
-
         </section>
 
         <!-- JUEGOS -->
 
         <section class="section" id="juegos">
           <div class="container mx-auto px-6">
-
-            <h2 class="text-4xl font-black mb-2">
-              ¿Qué juego en el stream?
-            </h2>
+            <h2 class="text-4xl font-black mb-2">¿Qué juego en el stream?</h2>
 
             <p class="text-slate-400 mb-8">
               Streamer de variedad, un día Minecraft, el otro Valorant. Siempre
@@ -296,9 +292,7 @@
             </p>
 
             <div class="grid md:grid-cols-5 gap-4">
-
               <div class="glass rounded-xl p-6" v-for="g in games" :key="g">
-
                 <div
                   class="card-letter w-11 h-11 rounded-md grid place-items-center font-black mb-5"
                 >
@@ -310,9 +304,7 @@
                 <p class="text-slate-400 text-sm mt-2">
                   Survival, builds y locuras con la comunidad.
                 </p>
-
               </div>
-
             </div>
           </div>
         </section>
@@ -321,27 +313,20 @@
 
         <section class="section" id="clips">
           <div class="container mx-auto px-6">
-
-            <h2 class="text-4xl font-black mb-2">
-              Clips destacados
-            </h2>
+            <h2 class="text-4xl font-black mb-2">Clips destacados</h2>
 
             <p class="text-slate-400 mb-8">
               Los mejores momentos del stream, directo desde Twitch.
             </p>
 
             <div class="flex items-center gap-4">
-
               <div class="arrow hidden md:grid">‹</div>
 
               <div class="grid md:grid-cols-2 gap-5 flex-1">
-
                 <div v-for="clip in clips" :key="clip.id">
-
                   <!-- IFRAME INDIVIDUAL PARA CADA CLIP -->
 
                   <div class="video video-clip rounded-lg">
-
                     <iframe
                       :src="`https://clips.twitch.tv/embed?clip=${clip.id}&parent=${twitchParent}`"
                       :title="clip.title"
@@ -349,62 +334,58 @@
                       scrolling="no"
                       allow="autoplay; fullscreen"
                     ></iframe>
-
                   </div>
 
-                  <h3 class="font-black mt-4">
-                    {{clip.title}}
-                  </h3>
+                  <h3 class="font-black mt-4">{{clip.title}}</h3>
 
-                  <p class="text-slate-500 text-sm">
-                    {{clip.description}}
-                  </p>
-
+                  <p class="text-slate-500 text-sm">{{clip.description}}</p>
                 </div>
-
               </div>
 
               <div class="arrow hidden md:grid">›</div>
-
             </div>
 
             <div class="dots flex justify-center gap-2 mt-8">
               <span v-for="n in 8" :key="n"></span>
             </div>
-
           </div>
         </section>
 
         <!-- YOUTUBE -->
 
         <section class="section" id="youtube">
-
-          <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-
+          <div
+            class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center"
+          >
             <!-- IFRAME YOUTUBE -->
 
             <div class="video video-youtube neon">
-
               <iframe
-                src="https://www.youtube.com/@elgiovah/embed"
-                title="Videos del canal de YouTube de ElGiovah"
+                src="https://www.youtube.com/embed/videoseries?list=
+UCiMXidJQwpo84QeNnB05Nhw"
+                title="Canal de YouTube de ElGiovah"
+                width="100%"
+                height="500"
                 loading="lazy"
                 allowfullscreen
-                referrerpolicy="strict-origin-when-cross-origin"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allow="
+                  accelerometer;
+                  autoplay;
+                  clipboard-write;
+                  encrypted-media;
+                  gyroscope;
+                  picture-in-picture;
+                  web-share;
+                "
               ></iframe>
-
             </div>
 
             <div>
-
               <p class="cyan uppercase tracking-[.28em] text-xs font-black">
                 YouTube
               </p>
 
-              <h2 class="text-4xl font-black mb-3">
-                Mirá el canal de YouTube
-              </h2>
+              <h2 class="text-4xl font-black mb-3">Mirá el canal de YouTube</h2>
 
               <p class="text-slate-400 mb-5">
                 Videos, highlights y contenido para los que se pierden el
@@ -419,27 +400,24 @@
               >
                 Ver canal en YouTube
               </a>
-
             </div>
-
           </div>
         </section>
 
         <!-- INSTAGRAM -->
 
         <section class="section" id="instagram">
-
-          <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-
+          <div
+            class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center"
+          >
             <div>
-
-              <p class="cyan uppercase tracking-[.28em] text-xs font-black mb-4">
+              <p
+                class="cyan uppercase tracking-[.28em] text-xs font-black mb-4"
+              >
                 Instagram
               </p>
 
-              <h2 class="text-4xl font-black mb-3">
-                Seguime en Instagram
-              </h2>
+              <h2 class="text-4xl font-black mb-3">Seguime en Instagram</h2>
 
               <p class="text-slate-400 max-w-xl mb-6">
                 Posts, historias y avisos de cada directo, enterate de todo
@@ -454,13 +432,11 @@
               >
                 Seguir en Instagram
               </a>
-
             </div>
 
             <!-- IFRAME INSTAGRAM -->
 
             <div class="video-instagram neon">
-
               <!-- Instagram no ofrece un iframe oficial para insertar el perfil completo.
                    Reemplazá CODIGO_PUBLICACION por el shortcode de un post o Reel público. -->
               <iframe
@@ -470,28 +446,21 @@
                 scrolling="no"
                 allowtransparency="true"
               ></iframe>
-
             </div>
-
           </div>
         </section>
 
         <!-- HORARIOS -->
 
         <section class="section">
-
           <div class="container mx-auto px-6">
-
-            <h2 class="text-4xl font-black mb-2">
-              Horarios de directo
-            </h2>
+            <h2 class="text-4xl font-black mb-2">Horarios de directo</h2>
 
             <p class="text-slate-400 mb-8">
               Conectate a Twitch y sumate al stream.
             </p>
 
             <div class="grid grid-cols-2 md:grid-cols-7 gap-3">
-
               <div
                 class="glass rounded p-5 text-center"
                 v-for="d in days"
@@ -499,11 +468,8 @@
               >
                 <b>{{d.day}}</b>
 
-                <p class="cyan text-sm mt-1">
-                  {{d.time}}
-                </p>
+                <p class="cyan text-sm mt-1">{{d.time}}</p>
               </div>
-
             </div>
           </div>
         </section>
@@ -511,38 +477,27 @@
         <!-- COMUNIDAD -->
 
         <section class="py-14" id="comunidad">
-
           <div class="container mx-auto px-6">
-
             <div
               class="rounded-xl text-center py-20 bg-[radial-gradient(circle_at_center,#6321a0,transparent_55%),linear-gradient(90deg,#0b0616,#180b2e,#0b0616)]"
             >
-
-              <h2 class="text-4xl font-black mb-3">
-                Sumate a la comunidad
-              </h2>
+              <h2 class="text-4xl font-black mb-3">Sumate a la comunidad</h2>
 
               <p class="text-slate-300 mb-6">
                 Si querés jugar con nosotros, enterarte de los directos y
                 charlar con la gente, entrá al server de Discord.
               </p>
 
-              <a class="btn btn-blue inline-block">
-                Unirme al Discord
-              </a>
-
+              <a class="btn btn-blue inline-block"> Unirme al Discord </a>
             </div>
           </div>
         </section>
-
       </main>
 
       <!-- FOOTER -->
 
       <footer class="py-10">
-
         <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8">
-
           <div>
             <b class="text-xl">ElGiovah</b>
 
@@ -572,15 +527,12 @@
               Discord
             </p>
           </div>
-
         </div>
 
         <p class="text-center text-slate-600 text-sm mt-8">
           © 2025 ElGiovah · Todos los derechos reservados
         </p>
-
       </footer>
-
     </div>
 
     <!-- VUE -->
@@ -589,11 +541,8 @@
       const { createApp } = Vue;
 
       createApp({
-
         setup() {
-
           return {
-
             // Detecta automáticamente localhost, el dominio principal o un subdominio.
             // Twitch requiere que este valor coincida exactamente con el host de la página.
             twitchParent: window.location.hostname,
@@ -635,12 +584,9 @@
               { day: "Sáb", time: "Variable" },
               { day: "Dom", time: "Descanso" },
             ],
-
           };
         },
-
       }).mount("#app");
     </script>
-
   </body>
 </html>
