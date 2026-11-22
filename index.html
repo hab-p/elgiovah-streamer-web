@@ -1,40 +1,49 @@
-<!doctype html>
 
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>ElGiovah</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://registry.npmmirror.com/vue/3.3.11/files/dist/vue.global.js"></script>
+
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+
     <style>
       html {
         scroll-behavior: smooth;
       }
+
       body {
         font-family: Inter, system-ui, sans-serif;
         background: #07040f;
         color: white;
       }
+
       .container {
         max-width: 1190px;
       }
+
       .section {
         padding: 62px 0;
         border-top: 1px solid rgba(255, 255, 255, 0.025);
       }
+
       .cyan {
         color: #00e5ff;
       }
+
       .mag {
         color: #ff2eff;
       }
+
       .glass {
         background: linear-gradient(
           145deg,
@@ -44,106 +53,123 @@
         border: 1px solid rgba(125, 75, 190, 0.22);
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
       }
+
       .neon {
         box-shadow:
           0 0 0 1px #9b34ff,
           0 0 22px rgba(171, 45, 255, 0.65),
           inset 0 0 28px rgba(72, 25, 130, 0.48);
       }
+
+      /* Contenedores de reproductores */
+
       .video {
         position: relative;
         overflow: hidden;
-        background:
-          radial-gradient(
-            circle at 60% 35%,
-            rgba(119, 70, 210, 0.62),
-            transparent 34%
-          ),
-          linear-gradient(135deg, #1d1042, #120922 58%, #251054);
+        background: #120922;
         border-radius: 12px;
+        width: 100%;
       }
-      .video:after {
-        content: "";
-        position: absolute;
-        left: 14px;
-        right: 14px;
-        bottom: 12px;
-        height: 7px;
-        border-radius: 6px;
-        background: linear-gradient(90deg, #b327ff 0 46%, #121019 46%);
-        border: 1px solid rgba(255, 255, 255, 0.25);
+
+      .video iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
       }
-      .play {
-        position: absolute;
-        inset: 0;
-        display: grid;
-        place-items: center;
+
+      .video-hero {
+        aspect-ratio: 16 / 9;
+        min-height: 300px;
       }
-      .play span {
-        width: 76px;
-        height: 76px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.16);
-        display: grid;
-        place-items: center;
+
+      .video-clip {
+        aspect-ratio: 4 / 3;
       }
-      .play span:before {
-        content: "";
-        border-left: 18px solid #fff;
-        border-top: 13px solid transparent;
-        border-bottom: 13px solid transparent;
-        margin-left: 6px;
+
+      .video-youtube {
+        aspect-ratio: 16 / 9;
       }
+
+      .video-instagram {
+        width: 100%;
+        max-width: 400px;
+        min-height: 500px;
+        margin: auto;
+        border-radius: 14px;
+        overflow: hidden;
+        background: #150f2b;
+      }
+
+      .video-instagram iframe {
+        width: 100%;
+        height: 550px;
+        border: 0;
+      }
+
       .badge {
         position: absolute;
         top: 12px;
         left: 12px;
+        z-index: 2;
         background: #ff3333;
         color: white;
         font-size: 11px;
         font-weight: 900;
         border-radius: 4px;
         padding: 5px 9px;
+        pointer-events: none;
       }
+
       .time {
         position: absolute;
         top: 13px;
         right: 14px;
+        z-index: 2;
         color: #d8d0ef;
         font-size: 10px;
+        pointer-events: none;
       }
+
       .btn {
         font-weight: 800;
         border-radius: 8px;
         padding: 13px 22px;
         font-size: 14px;
       }
+
       .btn-red {
         background: #ff392f;
         box-shadow: 0 0 18px rgba(255, 43, 74, 0.45);
       }
+
       .btn-blue {
         background: #405cff;
         box-shadow: 0 0 18px rgba(60, 96, 255, 0.5);
       }
+
       .btn-grad {
         background: linear-gradient(90deg, #ffb629, #bb22ff);
       }
+
       .card-letter {
         background: linear-gradient(135deg, #15d7ff, #7f39ff);
         box-shadow: 0 0 14px rgba(51, 140, 255, 0.45);
       }
+
       .dots span {
         width: 6px;
         height: 6px;
         background: #34214e;
         border-radius: 50%;
       }
+
       .dots span:first-child {
         width: 22px;
         border-radius: 10px;
         background: #13ceff;
       }
+
       .arrow {
         width: 44px;
         height: 44px;
@@ -154,247 +180,424 @@
         color: #00e5ff;
         box-shadow: 0 0 18px rgba(0, 229, 255, 0.5);
       }
-      .insta-card {
-        background: #150f2b;
-        border-radius: 14px;
-        padding: 18px;
-      }
-      .gridpic {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 7px;
-      }
-      .gridpic div {
-        aspect-ratio: 1;
-        border-radius: 4px;
-        background: linear-gradient(135deg, #0bb4c9, #462490);
-      }
-      .gridpic div:nth-child(2n) {
-        background: linear-gradient(135deg, #e32976, #6c1e8d);
-      }
+
       footer {
         border-top: 1px solid rgba(255, 255, 255, 0.04);
       }
+
+      @media (max-width: 768px) {
+        .section {
+          padding: 45px 0;
+        }
+
+        .video-hero {
+          min-height: auto;
+        }
+
+        .video-instagram {
+          max-width: 100%;
+          min-height: 450px;
+        }
+
+        .video-instagram iframe {
+          height: 500px;
+        }
+      }
     </style>
   </head>
+
   <body>
     <div id="app">
+
+      <!-- HEADER -->
+
       <header class="fixed top-0 inset-x-0 z-50 bg-[#07040f]/85 backdrop-blur">
-        <div
-          class="container mx-auto px-6 h-16 flex items-center justify-between"
-        >
+        <div class="container mx-auto px-6 h-16 flex items-center justify-between">
           <div class="font-black text-xl">ElGiovah</div>
+
           <nav class="hidden md:flex gap-9 text-sm text-slate-300">
-            <a href="#inicio">Inicio</a><a href="#juegos">Juegos</a
-            ><a href="#clips">Clips</a><a href="#youtube">YouTube</a
-            ><a href="#instagram">Instagram</a
-            ><a href="#comunidad">Comunidad</a>
+            <a href="#inicio">Inicio</a>
+            <a href="#juegos">Juegos</a>
+            <a href="#clips">Clips</a>
+            <a href="#youtube">YouTube</a>
+            <a href="#instagram">Instagram</a>
+            <a href="#comunidad">Comunidad</a>
           </nav>
         </div>
       </header>
+
       <main class="pt-24" id="inicio">
-        <section
-          class="container mx-auto px-6 pb-28 grid lg:grid-cols-2 gap-14 items-center"
-        >
+
+        <!-- HERO / TWITCH EN VIVO -->
+
+        <section class="container mx-auto px-6 pb-28 grid lg:grid-cols-2 gap-14 items-center">
+
           <div>
             <p class="cyan uppercase tracking-[.28em] text-xs font-black mb-4">
               Streaming de Twitch
             </p>
+
             <h1 class="text-5xl md:text-6xl font-black leading-[.95] mb-6">
-              Variedad, caos<br />y
+              Variedad, caos<br />
+              y
               <span class="text-[#35d7ff]">buena onda</span>
             </h1>
+
             <p class="text-slate-300 text-lg max-w-xl leading-relaxed mb-7">
               Qué onda! Soy ElGiovah, streamer de variedad en Twitch. Acá vengo
               a jugar, reírme y armar comunidad: directos todos los semanas con
               buena onda, partidas con la gente y mucho caos.
             </p>
-            <div class="flex gap-4">
-              <a class="btn btn-blue">Unirme al directo</a
-              ><a class="btn border border-red-500 text-red-300"
-                >Entrar al Discord</a
+
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="https://www.twitch.tv/elgiovah"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-blue"
               >
+                Unirme al directo
+              </a>
+
+              <a class="btn border border-red-500 text-red-300">
+                Entrar al Discord
+              </a>
             </div>
           </div>
-          <div class="video neon h-[330px]">
-            <span class="badge">EN VIVO</span
-            ><span class="time">twitch.tv/ElGiovah</span>
-            <div class="play"><span></span></div>
+
+          <!-- IFRAME TWITCH -->
+
+          <div class="video video-hero neon">
+            <span class="badge">EN VIVO</span>
+
+            <iframe
+              :src="`https://player.twitch.tv/?channel=elgiovah&parent=${twitchParent}&muted=true`"
+              title="Stream en vivo de ElGiovah"
+              allowfullscreen
+              scrolling="no"
+              allow="autoplay; fullscreen"
+            ></iframe>
           </div>
+
         </section>
+
+        <!-- JUEGOS -->
+
         <section class="section" id="juegos">
           <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-black mb-2">¿Qué juego en el stream?</h2>
+
+            <h2 class="text-4xl font-black mb-2">
+              ¿Qué juego en el stream?
+            </h2>
+
             <p class="text-slate-400 mb-8">
               Streamer de variedad, un día Minecraft, el otro Valorant. Siempre
               algo distinto.
             </p>
+
             <div class="grid md:grid-cols-5 gap-4">
-              <div class="glass rounded-xl p-6" v-for="g in games">
+
+              <div class="glass rounded-xl p-6" v-for="g in games" :key="g">
+
                 <div
                   class="card-letter w-11 h-11 rounded-md grid place-items-center font-black mb-5"
                 >
                   {{g[0]}}
                 </div>
+
                 <h3 class="font-black text-lg">{{g}}</h3>
+
                 <p class="text-slate-400 text-sm mt-2">
                   Survival, builds y locuras con la comunidad.
                 </p>
+
               </div>
+
             </div>
           </div>
         </section>
+
+        <!-- CLIPS DE TWITCH -->
+
         <section class="section" id="clips">
           <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-black mb-2">Clips destacados</h2>
+
+            <h2 class="text-4xl font-black mb-2">
+              Clips destacados
+            </h2>
+
             <p class="text-slate-400 mb-8">
               Los mejores momentos del stream, directo desde Twitch.
             </p>
+
             <div class="flex items-center gap-4">
+
               <div class="arrow hidden md:grid">‹</div>
-              <div class="grid md:grid-cols-3 gap-5 flex-1">
-                <div v-for="i in 3">
-                  <div class="video h-40 rounded-lg">
-                    <span class="badge">CLIP</span
-                    ><span class="time">0{{i}}:3{{i}}</span>
-                    <div class="play"><span class="!w-16 !h-16"></span></div>
+
+              <div class="grid md:grid-cols-2 gap-5 flex-1">
+
+                <div v-for="clip in clips" :key="clip.id">
+
+                  <!-- IFRAME INDIVIDUAL PARA CADA CLIP -->
+
+                  <div class="video video-clip rounded-lg">
+
+                    <iframe
+                      :src="`https://clips.twitch.tv/embed?clip=${clip.id}&parent=${twitchParent}`"
+                      :title="clip.title"
+                      allowfullscreen
+                      scrolling="no"
+                      allow="autoplay; fullscreen"
+                    ></iframe>
+
                   </div>
-                  <h3 class="font-black mt-4">Título del clip {{i}}</h3>
-                  <p class="text-slate-500 text-sm">Hace 3 meses · 29 views</p>
+
+                  <h3 class="font-black mt-4">
+                    {{clip.title}}
+                  </h3>
+
+                  <p class="text-slate-500 text-sm">
+                    {{clip.description}}
+                  </p>
+
                 </div>
+
               </div>
+
               <div class="arrow hidden md:grid">›</div>
+
             </div>
+
             <div class="dots flex justify-center gap-2 mt-8">
-              <span v-for="n in 8"></span>
+              <span v-for="n in 8" :key="n"></span>
             </div>
+
           </div>
         </section>
+
+        <!-- YOUTUBE -->
+
         <section class="section" id="youtube">
-          <div
-            class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center"
-          >
-            <div class="video neon h-[310px]">
-              <span class="badge">ÚLTIMO VIDEO</span
-              ><span class="time">youtube.com/ElGiovah</span>
-              <div class="play"><span></span></div>
+
+          <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+
+            <!-- IFRAME YOUTUBE -->
+
+            <div class="video video-youtube neon">
+
+              <iframe
+                src="https://www.youtube.com/embed?listType=user_uploads&list=elgiovah"
+                title="Videos del canal de YouTube de ElGiovah"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              ></iframe>
+
             </div>
+
             <div>
+
               <p class="cyan uppercase tracking-[.28em] text-xs font-black">
                 YouTube
               </p>
-              <h2 class="text-4xl font-black mb-3">Mirá el canal de YouTube</h2>
+
+              <h2 class="text-4xl font-black mb-3">
+                Mirá el canal de YouTube
+              </h2>
+
               <p class="text-slate-400 mb-5">
                 Videos, highlights y contenido para los que se pierden el
                 directo.
               </p>
-              <div class="space-y-3 mb-6">
-                <div class="glass rounded-lg p-5 flex gap-4" v-for="i in 3">
-                  <div
-                    class="w-24 rounded bg-gradient-to-r from-purple-900 to-fuchsia-700"
-                  ></div>
-                  <div>
-                    <h3 class="font-black">Título del video {{i}}</h3>
-                    <p class="text-slate-500 text-sm">YouTube · ElGiovah</p>
-                  </div>
-                </div>
-              </div>
-              <a class="btn btn-red inline-block">Ver canal en YouTube</a>
+
+              <a
+                href="https://www.youtube.com/@elgiovah"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-red inline-block"
+              >
+                Ver canal en YouTube
+              </a>
+
             </div>
+
           </div>
         </section>
+
+        <!-- INSTAGRAM -->
+
         <section class="section" id="instagram">
-          <div
-            class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center"
-          >
+
+          <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+
             <div>
-              <p
-                class="cyan uppercase tracking-[.28em] text-xs font-black mb-4"
-              >
+
+              <p class="cyan uppercase tracking-[.28em] text-xs font-black mb-4">
                 Instagram
               </p>
-              <h2 class="text-4xl font-black mb-3">Seguime en Instagram</h2>
+
+              <h2 class="text-4xl font-black mb-3">
+                Seguime en Instagram
+              </h2>
+
               <p class="text-slate-400 max-w-xl mb-6">
                 Posts, historias y avisos de cada directo, enterate de todo
                 antes que nadie.
               </p>
-              <a class="btn btn-grad inline-block">Seguir en Instagram</a>
+
+              <a
+                href="https://www.instagram.com/_elgiovah/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-grad inline-block"
+              >
+                Seguir en Instagram
+              </a>
+
             </div>
-            <div class="justify-self-center insta-card neon w-[310px]">
-              <div class="flex items-center gap-3 mb-4">
-                <div
-                  class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 via-pink-500 to-purple-700"
-                ></div>
-                <div>
-                  <b>@elgiovah</b>
-                  <p class="text-xs text-slate-400">Streamer</p>
-                </div>
-              </div>
-              <div class="gridpic"><div v-for="n in 9"></div></div>
+
+            <!-- IFRAME INSTAGRAM -->
+
+            <div class="video-instagram neon">
+
+              <!-- Instagram no ofrece un iframe oficial para insertar el perfil completo.
+                   Reemplazá CODIGO_PUBLICACION por el shortcode de un post o Reel público. -->
+              <iframe
+                src="https://www.instagram.com/_elgiovah/embed"
+                title="Publicación de Instagram de ElGiovah"
+                loading="lazy"
+                scrolling="no"
+                allowtransparency="true"
+              ></iframe>
+
             </div>
+
           </div>
         </section>
+
+        <!-- HORARIOS -->
+
         <section class="section">
+
           <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-black mb-2">Horarios de directo</h2>
+
+            <h2 class="text-4xl font-black mb-2">
+              Horarios de directo
+            </h2>
+
             <p class="text-slate-400 mb-8">
               Conectate a Twitch y sumate al stream.
             </p>
+
             <div class="grid grid-cols-2 md:grid-cols-7 gap-3">
-              <div class="glass rounded p-5 text-center" v-for="d in days">
+
+              <div
+                class="glass rounded p-5 text-center"
+                v-for="d in days"
+                :key="d.day"
+              >
                 <b>{{d.day}}</b>
-                <p class="cyan text-sm mt-1">{{d.time}}</p>
+
+                <p class="cyan text-sm mt-1">
+                  {{d.time}}
+                </p>
               </div>
+
             </div>
           </div>
         </section>
+
+        <!-- COMUNIDAD -->
+
         <section class="py-14" id="comunidad">
+
           <div class="container mx-auto px-6">
+
             <div
               class="rounded-xl text-center py-20 bg-[radial-gradient(circle_at_center,#6321a0,transparent_55%),linear-gradient(90deg,#0b0616,#180b2e,#0b0616)]"
             >
-              <h2 class="text-4xl font-black mb-3">Sumate a la comunidad</h2>
+
+              <h2 class="text-4xl font-black mb-3">
+                Sumate a la comunidad
+              </h2>
+
               <p class="text-slate-300 mb-6">
                 Si querés jugar con nosotros, enterarte de los directos y
                 charlar con la gente, entrá al server de Discord.
               </p>
-              <a class="btn btn-blue inline-block">Unirme al Discord</a>
+
+              <a class="btn btn-blue inline-block">
+                Unirme al Discord
+              </a>
+
             </div>
           </div>
         </section>
+
       </main>
+
+      <!-- FOOTER -->
+
       <footer class="py-10">
+
         <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8">
+
           <div>
             <b class="text-xl">ElGiovah</b>
+
             <p class="text-slate-400 mt-3">
               Streamer de variedad en Twitch. Minecraft, Fortnite, Valorant, CS
               y más.
             </p>
           </div>
+
           <div>
             <b class="cyan">Navegación</b>
+
             <p class="text-slate-400 mt-3 leading-7">
-              Inicio<br />Clips<br />Horarios
+              Inicio<br />
+              Clips<br />
+              Horarios
             </p>
           </div>
+
           <div>
             <b class="cyan">Redes</b>
+
             <p class="text-slate-400 mt-3 leading-7">
-              Twitch<br />YouTube<br />Instagram<br />Discord
+              Twitch<br />
+              YouTube<br />
+              Instagram<br />
+              Discord
             </p>
           </div>
+
         </div>
+
         <p class="text-center text-slate-600 text-sm mt-8">
           © 2025 ElGiovah · Todos los derechos reservados
         </p>
+
       </footer>
+
     </div>
+
+    <!-- VUE -->
+
     <script>
       const { createApp } = Vue;
+
       createApp({
+
         setup() {
+
           return {
+
+            // Detecta automáticamente localhost, el dominio principal o un subdominio.
+            // Twitch requiere que este valor coincida exactamente con el host de la página.
+            twitchParent: window.location.hostname,
+
             games: [
               "Minecraft",
               "Fortnite",
@@ -402,18 +605,42 @@
               "Counter-Strike 2",
               "Y más...",
             ],
+
+            // REEMPLAZAR POR LOS IDS REALES DE LOS CLIPS DE TWITCH
+
+            clips: [
+              {
+                id: "GentleTemperedSandpiperTwitchRPG-ODuHoRlOD3CZH1YY?range=all",
+                title: "Moderador",
+                description: "Le da moderador a una seguidora",
+              },
+              {
+                id: "PlacidEndearingAlligatorKappaRoss-LUOLRvGF-Tfgm8-o?range=all",
+                title: "Se rinden ez",
+                description: "Ni lo intentan los rivales se rinden",
+              },
+              {
+                id: "ExquisiteCooperativeLouseMoreCowbell-9PZJqUzojK0bkF36?range=all",
+                title: "Se me corta el internet en la peor parte",
+                description: "En fin momento latam",
+              },
+            ],
+
             days: [
-              { day: "Lun", time: "21:00 hs" },
-              { day: "Mar", time: "21:00 hs" },
-              { day: "Mié", time: "21:00 hs" },
-              { day: "Jue", time: "21:00 hs" },
-              { day: "Vie", time: "21:00 hs" },
+              { day: "Lun", time: "Variable" },
+              { day: "Mar", time: "Variable" },
+              { day: "Mié", time: "Variable" },
+              { day: "Jue", time: "Variable" },
+              { day: "Vie", time: "Variable" },
               { day: "Sáb", time: "Variable" },
               { day: "Dom", time: "Descanso" },
             ],
+
           };
         },
+
       }).mount("#app");
     </script>
+
   </body>
 </html>
