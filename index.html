@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
     <style>
       html {
         scroll-behavior: smooth;
@@ -277,18 +277,40 @@
             </div>
           </div>
 
-          <!-- IFRAME TWITCH -->
+          <!-- IFRAME TWITCH / IMAGEN MOBILE -->
 
           <div class="video video-hero neon">
             <span class="badge">EN VIVO</span>
 
-            <iframe
-              :src="`https://player.twitch.tv/?channel=elgiovah&parent=${twitchParent}&muted=true`"
-              title="Stream en vivo de ElGiovah"
-              allowfullscreen
-              scrolling="no"
-              allow="autoplay; fullscreen"
-            ></iframe>
+            <!-- Escritorio -->
+            <a
+              href="https://www.twitch.tv/elgiovah"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hidden md:block w-full h-full"
+            >
+              <iframe
+                :src="`https://player.twitch.tv/?channel=elgiovah&parent=${twitchParent}&muted=true`"
+                title="Stream en vivo de ElGiovah"
+                allowfullscreen
+                scrolling="no"
+                allow="autoplay; fullscreen"
+              ></iframe>
+            </a>
+
+            <!-- Mobile -->
+            <a
+              href="https://www.twitch.tv/elgiovah"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block md:hidden w-full h-full"
+            >
+              <img
+                src="./stream-elgiovah-mobile.png"
+                alt="Stream en vivo de ElGiovah"
+                class="w-full h-full object-cover"
+              />
+            </a>
           </div>
         </section>
 
@@ -336,19 +358,48 @@
 
               <div class="grid md:grid-cols-2 gap-5 flex-1">
                 <div v-for="clip in clips" :key="clip.id">
-                  <!-- IFRAME INDIVIDUAL PARA CADA CLIP -->
+                  <!-- IFRAME INDIVIDUAL PARA CADA CLIP / IMAGEN MOBILE -->
 
                   <div class="video video-clip rounded-lg">
-                    <iframe
-                      :src="`https://clips.twitch.tv/embed?clip=${clip.id}&parent=${twitchParent}`"
-                      :title="clip.title"
-                      allowfullscreen
-                      scrolling="no"
-                      allow="autoplay; fullscreen"
-                    ></iframe>
+                    <!-- Escritorio -->
+                    <a
+                      :href="`https://clips.twitch.tv/clip/${clip.id}`"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="hidden md:block w-full h-full"
+                    >
+                      <iframe
+                        :src="`https://clips.twitch.tv/embed?clip=${clip.id}&parent=${twitchParent}`"
+                        :title="clip.title"
+                        allowfullscreen
+                        scrolling="no"
+                        allow="autoplay; fullscreen"
+                      ></iframe>
+                    </a>
+
+                    <!-- Mobile -->
+                    <a
+                      :href="`https://clips.twitch.tv/clip/${clip.id}`"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="block md:hidden w-full h-full"
+                    >
+                      <img
+                        src="./clip-elgiovah-mobile.png"
+                        :alt="clip.title"
+                        class="w-full h-full object-cover"
+                      />
+                    </a>
                   </div>
 
-                  <h3 class="font-black mt-4">{{clip.title}}</h3>
+                  <a
+                    :href="`https://clips.twitch.tv/clip/${clip.id}`"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="block mt-4"
+                  >
+                    <h3 class="font-black">{{clip.title}}</h3>
+                  </a>
 
                   <p class="text-slate-500 text-sm">{{clip.description}}</p>
                 </div>
@@ -438,18 +489,41 @@
               </a>
             </div>
 
-            <!-- IFRAME INSTAGRAM -->
+            <!-- IFRAME INSTAGRAM / IMAGEN MOBILE -->
 
             <div class="video-instagram neon">
               <!-- Instagram no ofrece un iframe oficial para insertar el perfil completo.
                    Reemplazá CODIGO_PUBLICACION por el shortcode de un post o Reel público. -->
-              <iframe
-                src="https://www.instagram.com/_elgiovah/embed"
-                title="Publicación de Instagram de ElGiovah"
-                loading="lazy"
-                scrolling="no"
-                allowtransparency="true"
-              ></iframe>
+
+              <!-- Escritorio -->
+              <a
+                href="https://www.instagram.com/_elgiovah/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hidden md:block w-full h-full"
+              >
+                <iframe
+                  src="https://www.instagram.com/_elgiovah/embed"
+                  title="Publicación de Instagram de ElGiovah"
+                  loading="lazy"
+                  scrolling="no"
+                  allowtransparency="true"
+                ></iframe>
+              </a>
+
+              <!-- Mobile -->
+              <a
+                href="https://www.instagram.com/_elgiovah/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block md:hidden w-full h-full"
+              >
+                <img
+                  src="./instagram-elgiovah-mobile.png"
+                  alt="Instagram de ElGiovah"
+                  class="w-full h-full object-cover"
+                />
+              </a>
             </div>
           </div>
         </section>
@@ -541,7 +615,7 @@
         </div>
 
         <p class="text-center text-slate-600 text-sm mt-8">
-          © 2025 ElGiovah · Todos los derechos reservados
+          © 2026 ElGiovah · Todos los derechos reservados
         </p>
       </footer>
     </div>
