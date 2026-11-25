@@ -15,6 +15,38 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="canonical" href="https://elgiovah-streamer-web.vercel.app" />
+    <!-- SEO PRINCIPAL -->
+    <title>ElGiovah | Streamer de Twitch, YouTube y Gaming</title>
+
+    <meta
+      name="description"
+      content="ElGiovah es un streamer de Twitch de variedad y creador de contenido en YouTube, con más de 1.900 suscriptores. Descubrí sus directos, clips, videojuegos y comunidad."
+    />
+
+    <meta
+      name="keywords"
+      content="ElGiovah, ElGiovah!, elgiovah streamer, ElGiovah Twitch, ElGiovah YouTube, ElGiovah página web, ElGiovah web page, streamer argentino, streamer de Twitch, creador de contenido gaming"
+    />
+
+    <meta name="author" content="ElGiovah" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Spanish" />
+    <meta name="application-name" content="ElGiovah" />
+    <!-- OPEN GRAPH -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ElGiovah | Streamer de Twitch" />
+    <meta
+      property="og:description"
+      content="Conocé a ElGiovah, streamer de Twitch y creador de contenido en YouTube. Directos, videojuegos, clips y comunidad."
+    />
+    <meta property="og:url" content="https://TU-DOMINIO.com/" />
+    <meta property="og:site_name" content="ElGiovah" />
+    <meta property="og:locale" content="es_AR" />
+    <meta
+      property="og:image"
+      content="https://TU-DOMINIO.com/logo-elgiovah-navbar.png"
+    />
     <style>
       html {
         scroll-behavior: smooth;
@@ -326,7 +358,11 @@
             </p>
 
             <div class="grid md:grid-cols-5 gap-4">
-              <div class="glass rounded-xl p-6" v-for="g in games" :key="g.name">
+              <div
+                class="glass rounded-xl p-6"
+                v-for="g in games"
+                :key="g.name"
+              >
                 <div
                   class="card-letter w-11 h-11 rounded-md grid place-items-center font-black mb-5"
                 >
@@ -335,9 +371,7 @@
 
                 <h3 class="font-black text-lg">{{g.name}}</h3>
 
-                <p class="text-slate-400 text-sm mt-2">
-                  {{g.description}}
-                </p>
+                <p class="text-slate-400 text-sm mt-2">{{g.description}}</p>
               </div>
             </div>
           </div>
@@ -635,23 +669,28 @@
             games: [
               {
                 name: "Minecraft",
-                description: "Exploración, construcciones y aventuras junto a la comunidad.",
+                description:
+                  "Exploración, construcciones y aventuras junto a la comunidad.",
               },
               {
                 name: "Fortnite",
-                description: "Combates intensos, construcciones y victorias inesperadas.",
+                description:
+                  "Combates intensos, construcciones y victorias inesperadas.",
               },
               {
                 name: "Valorant",
-                description: "Estrategia, precisión y partidas competitivas en equipo.",
+                description:
+                  "Estrategia, precisión y partidas competitivas en equipo.",
               },
               {
                 name: "Counter-Strike 2",
-                description: "Tiros, jugadas clutch y momentos llenos de tensión.",
+                description:
+                  "Tiros, jugadas clutch y momentos llenos de tensión.",
               },
               {
                 name: "Y más...",
-                description: "Nuevos juegos, desafíos y sorpresas en cada directo.",
+                description:
+                  "Nuevos juegos, desafíos y sorpresas en cada directo.",
               },
             ],
 
@@ -687,6 +726,32 @@
           };
         },
       }).mount("#app");
+    </script>
+    <!-- DATOS ESTRUCTURADOS SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "ElGiovah",
+        "alternateName": ["ElGiovah!", "elgiovah", "ElGiovah Streamer"],
+        "url": "https://TU-DOMINIO.com/",
+        "description": "ElGiovah es un streamer de Twitch de variedad y creador de contenido en YouTube, con más de 1.900 suscriptores. Comparte directos, videojuegos, clips y contenido gaming.",
+        "sameAs": [
+          "https://www.twitch.tv/elgiovah",
+          "https://www.youtube.com/@elgiovah",
+          "https://www.instagram.com/_elgiovah/"
+        ],
+        "knowsAbout": [
+          "Streaming",
+          "Twitch",
+          "YouTube",
+          "Minecraft",
+          "Fortnite",
+          "Valorant",
+          "Counter-Strike 2",
+          "Gaming"
+        ]
+      }
     </script>
   </body>
 </html>
